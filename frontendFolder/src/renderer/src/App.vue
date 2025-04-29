@@ -13,6 +13,8 @@ const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
     and
     <span class="ts">TypeScript</span>
   </div>
+  <div class="ts">this is from vue</div>
+
   <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
   <div class="actions">
     <div class="action">

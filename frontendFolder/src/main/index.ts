@@ -9,7 +9,7 @@ function createWindow(): void {
     width: 900,
     height: 670,
     transparent: true,
-    backgroundColor: '#000000000',
+    // backgroundColor: '#ab',
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),

@@ -3,6 +3,8 @@
 This is the frontend folder containing files,assets and code for the plug app.
 
 ## Components
+Things to consider: when adding new components, to style them(if tailwindcss isn't installed) we'd need to create a new css file for each component.
+
 
 ### Install
 

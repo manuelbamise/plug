@@ -8,7 +8,7 @@ function createWindow(): void {
   const mainWindow = new BrowserWindow({
     width: 900,
     height: 670,
-    transparent: true,
+    // transparent: true,
     // backgroundColor: '#ab',
     show: false,
     autoHideMenuBar: true,

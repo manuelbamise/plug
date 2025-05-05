@@ -1,6 +1,8 @@
 # plugfrontend
 
-The frontend for the plug app..using electron-vite
+This is the frontend folder containing files,assets and code for the plug app.
+
+## Components
 
 ### Install
 

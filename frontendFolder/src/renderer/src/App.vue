@@ -4,6 +4,8 @@ import Hero from './components/Hero.vue'
 
 <template>
   <Hero />
-  <div style="background: none;"></div>
+  <div class="bg-red-500">
+    this is a div
+  </div>
   this is the entry
 </template>

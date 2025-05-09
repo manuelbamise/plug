@@ -43,7 +43,11 @@ const handleGenerate = async () => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-gray-200 p-4 font-sans">
+  <div class="min-h-screen bg-red-900 text-gray-200 p-4">
+    <v-btn>Hello</v-btn>
+    <div>
+      this is a navbar
+    </div>
     <div class="w-full max-w-2xl bg-gray-800 shadow-2xl rounded-lg p-6 md:p-8">
       <header class="mb-8 text-center">
         <h1 class="text-4xl font-bold text-sky-400">{{ appName }}</h1>

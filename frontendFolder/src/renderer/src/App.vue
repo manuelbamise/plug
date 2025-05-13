@@ -88,7 +88,7 @@ const handleRailUpdate = (newRailState: boolean) => {
   <v-app>
     <v-app-bar color="grey">
       <v-app-bar-nav-icon @click="toggleDrawer">
-        <v-icon icon="mdi-home"></v-icon>
+        <v-icon icon="mdi-menu"></v-icon>
       </v-app-bar-nav-icon>
       <v-toolbar-title>{{ appName }}</v-toolbar-title>
     </v-app-bar>

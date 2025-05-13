@@ -2,8 +2,7 @@
 //import { ref } from 'vue'
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
 
-
-const appName = "plug"
+const appName = 'plug'
 const prompt = ref('')
 const idea = ref('') // Added separate field for 'idea' as per your prompt
 
@@ -12,7 +11,7 @@ const models = ref([
   { id: 'heros_journey', name: "The Hero's Journey Model" },
   { id: 'but_then_so', name: 'The But, Then, So Model' },
   { id: 'aida', name: 'AIDA Model' },
-  { id: 'pas', name: 'Problem-Agitate-Solve (PAS) Model' },
+  { id: 'pas', name: 'Problem-Agitate-Solve (PAS) Model' }
 ])
 
 const selectedModel = ref(models.value[0].id) // Default to the first model
@@ -36,12 +35,12 @@ const handleGenerate = async () => {
   console.log('Generating content with:', {
     prompt: prompt.value,
     idea: idea.value,
-    model: selectedModel.value,
+    model: selectedModel.value
   })
 
-  await new Promise(resolve => setTimeout(resolve, 2000)) // Simulate delay
+  await new Promise((resolve) => setTimeout(resolve, 2000)) // Simulate delay
 
-  generatedContent.value = `Generated content for:\nPrompt: "${prompt.value}"\nIdea: "${idea.value}"\nModel: "${models.value.find(m => m.id === selectedModel.value)?.name}".\n\nThis is where the structured content from the LLM will appear. It will be formatted based on the chosen model. For example, if the 3-2-1 model was chosen, you'd see 3 key takeaways, 2 supporting details, and 1 call to action here.`
+  generatedContent.value = `Generated content for:\nPrompt: "${prompt.value}"\nIdea: "${idea.value}"\nModel: "${models.value.find((m) => m.id === selectedModel.value)?.name}".\n\nThis is where the structured content from the LLM will appear. It will be formatted based on the chosen model. For example, if the 3-2-1 model was chosen, you'd see 3 key takeaways, 2 supporting details, and 1 call to action here.`
   isLoading.value = false
 }
 
@@ -60,8 +59,8 @@ const handleResize = () => {
 
 onMounted(() => {
   window.addEventListener('resize', handleResize)
-  drawerVisible.value = true;
-  rail.value = false;
+  drawerVisible.value = true
+  rail.value = false
 })
 
 onBeforeUnmount(() => {
@@ -71,11 +70,11 @@ onBeforeUnmount(() => {
 // Function to toggle the drawer's main visibility
 const toggleDrawer = () => {
   if (rail.value) {
-    rail.value = false; // Expand from rail
-    drawerVisible.value = true; // Ensure it's visible
+    rail.value = false // Expand from rail
+    drawerVisible.value = true // Ensure it's visible
   } else {
-    rail.value = true; // Collapse to rail
-    drawerVisible.value = true; // Still "visible" in rail mode
+    rail.value = true // Collapse to rail
+    drawerVisible.value = true // Still "visible" in rail mode
   }
 }
 
@@ -87,36 +86,32 @@ const handleRailUpdate = (newRailState: boolean) => {
 
 <template>
   <v-app>
-
     <v-app-bar color="grey">
-      <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="toggleDrawer">
+        <v-icon icon="mdi-home"></v-icon>
+      </v-app-bar-nav-icon>
       <v-toolbar-title>{{ appName }}</v-toolbar-title>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawerVisible" app :temporary="isMobile" :permanent="!isMobile && drawerVisible"
-      :expand-on-hover="!isMobile && !drawerVisible && rail" :rail="!isMobile && rail" @update:rail="handleRailUpdate"
-      color="grey-darken-3">
+      :expand-on-hover="!isMobile && !drawerVisible && rail" :rail="!isMobile && rail" color="grey-darken-3"
+      @update:rail="handleRailUpdate">
       <v-list>
         <v-list-item>
           <v-btn prepend-icon="mdi mdi-home">Generating tab</v-btn>
         </v-list-item>
       </v-list>
 
-      <template v-if="!isMobile" v-slot:append>
+      <template v-if="!isMobile" #append>
         <div class="pa-2">
           <v-btn block @click="rail = !rail">
             {{ rail ? 'Expand' : 'Collapse' }}
           </v-btn>
         </div>
       </template>
-
     </v-navigation-drawer>
 
-
-
-    <v-main class="bg-gray-700">
-      main content
-    </v-main>
+    <v-main class="bg-gray-700"> main content </v-main>
   </v-app>
 </template>
 

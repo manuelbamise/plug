@@ -98,7 +98,7 @@ const handleRailUpdate = (newRailState: boolean) => {
       @update:rail="handleRailUpdate">
       <v-list>
         <v-list-item>
-          <v-btn prepend-icon="mdi mdi-home">Generating tab</v-btn>
+          <v-btn prepend-icon="mdi-home">Generating tab</v-btn>
         </v-list-item>
       </v-list>
 

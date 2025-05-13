@@ -117,7 +117,7 @@ const handleRailUpdate = (newRailState: boolean) => {
 
 <style scoped>
 /* Scoped styles can be added here if needed, but Tailwind handles most of it. */
-/* Make the select arrow visible on dark backgrounds (Tailwind sometimes needs help here) */
+/* Make the gselect arrow visible on dark backgrounds (Tailwind sometimes needs help here) */
 select {
   -webkit-appearance: none;
   -moz-appearance: none;

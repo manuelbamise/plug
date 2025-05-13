@@ -4,7 +4,8 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-import App from './App.vue'
+// Import MDI font CSS
+import '@mdi/font/css/materialdesignicons.css'
 
 const vuetify = createVuetify({
   components,

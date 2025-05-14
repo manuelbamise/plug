@@ -100,15 +100,17 @@ const handleRailUpdate = (newRailState: boolean) => {
       @update:rail="handleRailUpdate"
     >
       <v-list>
-        <v-list-item>
-          <v-btn prepend-icon="mdi-home">Generating tab</v-btn>
+        <v-list-item prepend-icon="mdi-home" class="hover:shadow hover:bg-red-lighten-3">
+          <v-btn variant="text">Generating texts</v-btn>
         </v-list-item>
       </v-list>
 
       <template v-if="!isMobile" #append>
         <div class="pa-2">
           <v-btn block @click="rail = !rail">
-            {{ rail ? 'Expand' : 'Collapse' }}
+            <!-- {{ rail ? 'Expand' : 'Collapse' }} -->
+            <v-icon v-if="rail" icon="mdi-arrow-expand-right"></v-icon>
+            <v-icon v-else icon="mdi-arrow-expand-left"></v-icon>
           </v-btn>
         </div>
       </template>

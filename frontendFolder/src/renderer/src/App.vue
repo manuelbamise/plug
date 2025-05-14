@@ -108,7 +108,6 @@ const handleRailUpdate = (newRailState: boolean) => {
       <template v-if="!isMobile" #append>
         <div class="pa-2">
           <v-btn block @click="rail = !rail">
-            <!-- {{ rail ? 'Expand' : 'Collapse' }} -->
             <v-icon v-if="rail" icon="mdi-arrow-expand-right"></v-icon>
             <v-icon v-else icon="mdi-arrow-expand-left"></v-icon>
           </v-btn>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-//import { ref } from 'vue'
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import TopBar from './components/TopBar.vue'
 
 const appName = 'plug'
 const prompt = ref('')
@@ -40,7 +40,10 @@ const handleGenerate = async () => {
 
   await new Promise((resolve) => setTimeout(resolve, 2000)) // Simulate delay
 
-  generatedContent.value = `Generated content for:\nPrompt: "${prompt.value}"\nIdea: "${idea.value}"\nModel: "${models.value.find((m) => m.id === selectedModel.value)?.name}".\n\nThis is where the structured content from the LLM will appear. It will be formatted based on the chosen model. For example, if the 3-2-1 model was chosen, you'd see 3 key takeaways, 2 supporting details, and 1 call to action here.`
+  generatedContent.value = `Generated content for:\nPrompt: "${prompt.value}"\nIdea: "${idea.value}"\nModel:
+"${models.value.find((m) => m.id === selectedModel.value)?.name}".\n\nThis is where the structured content from the LLM
+will appear. It will be formatted based on the chosen model. For example, if the 3-2-1 model was chosen, you'd see 3 key
+takeaways, 2 supporting details, and 1 call to action here.`
   isLoading.value = false
 }
 
@@ -50,6 +53,16 @@ const drawerVisible = ref(false) // Or false if you want it closed by default on
 // Reactive variable to control the "rail" state (mini-variant) for desktop
 const rail = ref(false) // Start with full drawer or mini, as you prefer
 
+// Function to toggle the drawer's main visibility
+const toggleDrawer = () => {
+  if (rail.value) {
+    rail.value = false // Expand from rail
+    drawerVisible.value = true // Ensure it's visible
+  } else {
+    rail.value = true // Collapse to rail
+    drawerVisible.value = true // Still "visible" in rail mode
+  }
+}
 // For handling mobile/desktop behavior
 const windowWidth = ref(window.innerWidth)
 
@@ -67,17 +80,6 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize)
 })
 
-// Function to toggle the drawer's main visibility
-const toggleDrawer = () => {
-  if (rail.value) {
-    rail.value = false // Expand from rail
-    drawerVisible.value = true // Ensure it's visible
-  } else {
-    rail.value = true // Collapse to rail
-    drawerVisible.value = true // Still "visible" in rail mode
-  }
-}
-
 // If you allow expand-on-hover, you might want to update rail state
 const handleRailUpdate = (newRailState: boolean) => {
   rail.value = newRailState
@@ -86,15 +88,17 @@ const handleRailUpdate = (newRailState: boolean) => {
 
 <template>
   <v-app>
-    <v-app-bar color="grey">
-      <v-app-bar-nav-icon @click="toggleDrawer">
-        <v-icon icon="mdi-menu"></v-icon>
-      </v-app-bar-nav-icon>
-      <v-toolbar-title>{{ appName }}</v-toolbar-title>
-    </v-app-bar>
+    <TopBar :app-name="appName" @toggle-drawer="toggleDrawer" />
 
-    <v-navigation-drawer v-model="drawerVisible" app :permanent="drawerVisible"
-      :expand-on-hover="!drawerVisible && rail" :rail="rail" color="grey-darken-3" @update:rail="handleRailUpdate">
+    <v-navigation-drawer
+      v-model="drawerVisible"
+      app
+      :permanent="drawerVisible"
+      :expand-on-hover="!drawerVisible && rail"
+      :rail="rail"
+      color="grey-darken-3"
+      @update:rail="handleRailUpdate"
+    >
       <v-list>
         <v-list-item>
           <v-btn prepend-icon="mdi-home">Generating tab</v-btn>

@@ -45,7 +45,7 @@ const handleGenerate = async () => {
 }
 
 // Reactive variable to control the drawer's visibility
-const drawerVisible = ref(true) // Or false if you want it closed by default on desktop
+const drawerVisible = ref(false) // Or false if you want it closed by default on desktop
 
 // Reactive variable to control the "rail" state (mini-variant) for desktop
 const rail = ref(false) // Start with full drawer or mini, as you prefer
@@ -60,7 +60,7 @@ const handleResize = () => {
 onMounted(() => {
   window.addEventListener('resize', handleResize)
   drawerVisible.value = true
-  rail.value = false
+  rail.value = true
 })
 
 onBeforeUnmount(() => {
@@ -93,9 +93,15 @@ const handleRailUpdate = (newRailState: boolean) => {
       <v-toolbar-title>{{ appName }}</v-toolbar-title>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawerVisible" app :temporary="isMobile" :permanent="!isMobile && drawerVisible"
-      :expand-on-hover="!isMobile && !drawerVisible && rail" :rail="!isMobile && rail" color="grey-darken-3"
-      @update:rail="handleRailUpdate">
+    <v-navigation-drawer
+      v-model="drawerVisible"
+      app
+      :permanent="drawerVisible"
+      :expand-on-hover="!drawerVisible && rail"
+      :rail="rail"
+      color="grey-darken-3"
+      @update:rail="handleRailUpdate"
+    >
       <v-list>
         <v-list-item>
           <v-btn prepend-icon="mdi-home">Generating tab</v-btn>

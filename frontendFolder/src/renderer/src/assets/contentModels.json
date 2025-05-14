@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "model": "3,2,1",
+    "useCase": "It defines three types of the subject, two use cases and the one major thing about the subject"
+  },
+  {
+    "id": 2,
+    "model": "hero's journey",
+    "useCase": "It defines three types of the subject, two use cases and the one major thing about the subject"
+  }
+]

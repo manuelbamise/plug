@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import TopBar from './components/TopBar.vue'
+import ContentModels from './assets/contentModels.json'
 
 const appName = ref('plug')
 const drawerVisible = ref(true) // Or based on screen size initially
@@ -8,7 +9,7 @@ const rail = ref(false)
 
 onMounted(() => {
   drawerVisible.value = true // Or false, depending on your desired initial state
-  rail.value = false // Or true, if you want it in rail mode initially
+  rail.value = true // Or true, if you want it in rail mode initially
 })
 
 const handleToggleDrawer = () => {
@@ -21,6 +22,10 @@ const handleToggleDrawer = () => {
     rail.value = false
   }
 }
+
+const prompt = ref('this is a test prompt')
+const selectedModel = ref(null)
+const contentModels = ref(ContentModels)
 </script>
 
 <template>
@@ -37,8 +42,12 @@ const handleToggleDrawer = () => {
       @update:rail="(newRailState) => (rail = newRailState)"
     >
       <v-list>
-        <v-list-item prepend-icon="mdi-home" title="Dashboard"></v-list-item>
-        <v-list-item prepend-icon="mdi-cog" title="Settings"></v-list-item>
+        <v-list-item prepend-icon="mdi-home">
+          <v-btn variant="text"> Generate text</v-btn>
+        </v-list-item>
+        <v-list-item prepend-icon="mdi-cog">
+          <v-btn variant="text"> Generate text</v-btn>
+        </v-list-item>
       </v-list>
       <template #append>
         <div class="pa-2">
@@ -50,14 +59,26 @@ const handleToggleDrawer = () => {
       </template>
     </v-navigation-drawer>
 
-    <v-main>
+    <v-main class="bg-grey-darken-2">
       <v-container fluid>
-        <p>This is your main content area.</p>
-        <p>
-          It should start below the App Bar and be pushed by the Navigation Drawer when it's open on
-          desktop.
-        </p>
-        <div style="height: 1500px; background: lightblue">Scrollable Content Block</div>
+        <h2>This is the text place</h2>
+
+        <v-textarea
+          v-model="prompt"
+          variant="outlined"
+          label="What idea do you need more context on ?"
+        ></v-textarea>
+        <v-select
+          v-model="selectedModel"
+          label="Content model"
+          :items="contentModels"
+          item-value="id"
+          item-title="model"
+          variant="outlined"
+        ></v-select>
+        <v-btn>Plug it</v-btn>
+
+        <p>{{ selectedModel }}</p>
       </v-container>
     </v-main>
   </v-app>

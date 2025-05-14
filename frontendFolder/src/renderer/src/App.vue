@@ -72,7 +72,6 @@ const contentModels = ref(ContentModels)
           v-model="selectedModel"
           label="Content model"
           :items="contentModels"
-          item-value="id"
           item-title="model"
           variant="outlined"
         ></v-select>

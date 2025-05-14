@@ -19,7 +19,7 @@ const handleNavIconClick = () => {
 </script>
 
 <template>
-  <v-app-bar color="grey">
+  <v-app-bar app color="grey">
     <v-app-bar-nav-icon @click="handleNavIconClick">
       <v-icon icon="mdi-menu"></v-icon>
     </v-app-bar-nav-icon>

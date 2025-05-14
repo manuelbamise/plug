@@ -93,15 +93,8 @@ const handleRailUpdate = (newRailState: boolean) => {
       <v-toolbar-title>{{ appName }}</v-toolbar-title>
     </v-app-bar>
 
-    <v-navigation-drawer
-      v-model="drawerVisible"
-      app
-      :permanent="drawerVisible"
-      :expand-on-hover="!drawerVisible && rail"
-      :rail="rail"
-      color="grey-darken-3"
-      @update:rail="handleRailUpdate"
-    >
+    <v-navigation-drawer v-model="drawerVisible" app :permanent="drawerVisible"
+      :expand-on-hover="!drawerVisible && rail" :rail="rail" color="grey-darken-3" @update:rail="handleRailUpdate">
       <v-list>
         <v-list-item>
           <v-btn prepend-icon="mdi-home">Generating tab</v-btn>

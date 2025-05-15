@@ -24,6 +24,26 @@ const handleToggleDrawer = () => {
 const prompt = ref('this is a test prompt')
 const selectedModel = ref(null)
 const contentModels = ref(ContentModels)
+const sentData = ref(null)
+
+const handleSend = () => {
+  const dataToSend = {
+    prompt: prompt.value,
+    selectedModel: selectedModel.value,
+    timestamp: new Date().toLocaleString()
+  }
+
+  sentData.value = dataToSend
+
+  prompt.value = ''
+  selectedModel.value = ''
+}
+
+const loading = ref(false)
+function load() {
+  loading.value = true
+  setTimeout(() => (handleSend(), (loading.value = false)), 3000)
+}
 </script>
 
 <template>
@@ -74,16 +94,26 @@ const contentModels = ref(ContentModels)
           item-value="id"
           variant="outlined"
         ></v-select>
-        <v-btn>Plug it</v-btn>
+        <v-btn :loading="loading" @click="load">Plug it</v-btn>
 
         <div>
-          {{ selectedModel }}
-          <div v-for="(model, index) in ContentModels" key="index">
+          <!--{{ selectedModel }}-->
+          <div v-for="model in ContentModels" :key="model.id">
             <div v-if="selectedModel == model.id">
-              {{ model.useCase }}
+              {{ model.description }}
             </div>
           </div>
         </div>
+
+        <div v-if="sentData">
+          <h2>Simulated Database Entry:</h2>
+          <p><strong>Prompt:</strong> {{ sentData.prompt }}</p>
+          <p><strong>Selected Model:</strong> {{ sentData.selectedModel }}</p>
+          <p v-if="sentData.timestamp"><strong>Timestamp:</strong> {{ sentData.timestamp }}</p>
+        </div>
+        <!--<div v-else>
+          <p>No data "sent" yet.</p>
+        </div>-->
       </v-container>
     </v-main>
   </v-app>

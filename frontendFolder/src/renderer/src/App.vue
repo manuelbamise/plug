@@ -76,7 +76,14 @@ const contentModels = ref(ContentModels)
         ></v-select>
         <v-btn>Plug it</v-btn>
 
-        <p>{{ selectedModel }}</p>
+        <div>
+          {{ selectedModel }}
+          <div v-for="(model, index) in ContentModels" key="index">
+            <div v-if="selectedModel == model.id">
+              {{ model.useCase }}
+            </div>
+          </div>
+        </div>
       </v-container>
     </v-main>
   </v-app>

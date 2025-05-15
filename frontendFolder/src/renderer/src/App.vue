@@ -4,20 +4,18 @@ import TopBar from './components/TopBar.vue'
 import ContentModels from './assets/contentModels.json'
 
 const appName = ref('plug')
-const drawerVisible = ref(true) // Or based on screen size initially
+const drawerVisible = ref(true)
 const rail = ref(false)
 
 onMounted(() => {
-  drawerVisible.value = true // Or false, depending on your desired initial state
-  rail.value = true // Or true, if you want it in rail mode initially
+  drawerVisible.value = true
+  rail.value = true
 })
 
 const handleToggleDrawer = () => {
   if (drawerVisible.value) {
-    // Ensure drawer is conceptually "on"
     rail.value = !rail.value
   } else {
-    // If it was completely off, open it fully
     drawerVisible.value = true
     rail.value = false
   }
@@ -73,6 +71,7 @@ const contentModels = ref(ContentModels)
           label="Content model"
           :items="contentModels"
           item-title="model"
+          item-value="id"
           variant="outlined"
         ></v-select>
         <v-btn>Plug it</v-btn>

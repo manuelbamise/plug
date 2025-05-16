@@ -21,7 +21,7 @@ const handleToggleDrawer = () => {
   }
 }
 
-const prompt = ref('this is a test prompt')
+const prompt = ref('')
 const selectedModel = ref(null)
 const contentModels = ref(ContentModels)
 const sentData = ref(null)
@@ -36,7 +36,7 @@ const handleSend = () => {
   sentData.value = dataToSend
 
   prompt.value = ''
-  selectedModel.value = ''
+  selectedModel.value = null
 }
 
 const loading = ref(false)
@@ -96,14 +96,13 @@ function load() {
         ></v-select>
         <v-btn :loading="loading" @click="load">Plug it</v-btn>
 
-        <div>
-          <!--{{ selectedModel }}-->
+        <!--<div>
           <div v-for="model in ContentModels" :key="model.id">
             <div v-if="selectedModel == model.id">
               {{ model.description }}
             </div>
           </div>
-        </div>
+        </div>-->
 
         <div v-if="sentData">
           <h2>Simulated Database Entry:</h2>

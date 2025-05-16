@@ -60,6 +60,8 @@ function load() {
       @update:rail="(newRailState) => (rail = newRailState)"
     >
       <v-list>
+        <!--TODO: Fix this to be able to navigate between different pages
+            and their icons can be clicked and interacted with-->
         <v-list-item prepend-icon="mdi-home">
           <v-btn variant="text"> Generate text</v-btn>
         </v-list-item>
@@ -67,6 +69,7 @@ function load() {
           <v-btn variant="text"> Generate text</v-btn>
         </v-list-item>
       </v-list>
+
       <template #append>
         <div class="pa-2">
           <v-btn block @click="rail = !rail">
@@ -80,7 +83,7 @@ function load() {
     <v-main class="bg-grey-darken-2">
       <v-container fluid>
         <h2>This is the text place</h2>
-
+        <!--TODO find a better design to add here for the main text generation page-->
         <v-textarea
           v-model="prompt"
           variant="outlined"

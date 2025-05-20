@@ -80,10 +80,10 @@ function load() {
       </template>
     </v-navigation-drawer>
 
-    <v-main class="bg-grey-lighten-3 pa-6">
+    <v-main class="bg-grey-darken-2">
       <v-container fluid>
         <h2>This is the text place</h2>
-        <!--TODO find a better design to add here for the main text generation page -->
+        <!--TODO find a better design to add here for the main text generation page-->
         <v-textarea
           v-model="prompt"
           variant="outlined"
@@ -105,7 +105,7 @@ function load() {
               {{ model.description }}
             </div>
           </div>
-        </div> -->
+        </div>-->
 
         <div v-if="sentData">
           <h2>Simulated Database Entry:</h2>
@@ -113,9 +113,9 @@ function load() {
           <p><strong>Selected Model:</strong> {{ sentData.selectedModel }}</p>
           <p v-if="sentData.timestamp"><strong>Timestamp:</strong> {{ sentData.timestamp }}</p>
         </div>
-        <div v-else>
+        <!--<div v-else>
           <p>No data "sent" yet.</p>
-        </div>
+        </div>-->
       </v-container>
     </v-main>
   </v-app>

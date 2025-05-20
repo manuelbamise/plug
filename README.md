@@ -1,9 +1,32 @@
-# plug
-contains the files, folders and assets for the frontend of the application
+# plugfrontend
+
+This is the frontend folder containing files,assets and code for the plug app.
+
+## Components
+Things to consider: when adding new components, to style them(if tailwindcss isn't installed) we'd need to create a new css file for each component.
 
 
-Essentially the baseline function of the application is to take user prompt and an information model they choose and pass it to the backend, which then
-  + webscrapes the internet or use the searchAPI to get current information based on the user prompt.
-we then pass the response from this and pass it to the llm and have it generate content ideas,potential taglines, tags, description etc for the prompt.
+### Install
 
-  + or we just pass the user prompt directly to the llm and based on the model chosen by the user, the llm generates the response and then passes it to the UI.
+```bash
+$ npm install
+```
+
+### Development
+
+```bash
+$ npm run dev
+```
+
+### Build
+
+```bash
+# For windows
+$ npm run build:win
+
+# For macOS
+$ npm run build:mac
+
+# For Linux
+$ npm run build:linux
+```

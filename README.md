@@ -1,5 +1,5 @@
 # plug
-contains the files, folders and assets for the frontend and backend of the application
+contains the files, folders and assets for the frontend of the application
 
 
 Essentially the baseline function of the application is to take user prompt and an information model they choose and pass it to the backend, which then

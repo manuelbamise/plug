@@ -1,8 +1,22 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { defineProps } from 'vue'
 
+defineProps({
+  rail: {
+    type: Boolean
+  }
+})
+
+//defining the event that the component will emit
+const emit = defineEmits(['toggle-rail'])
+
+// Method to be called when the nav icon is clicked
+const handleToggleRail = (): void => {
+  emit('toggle-rail') // Emit the custom event
+}
+</script>
 <template>
   <v-navigation-drawer
-    v-model="drawerVisible"
     app
     :permanent="true"
     :rail="rail"
@@ -23,7 +37,7 @@
 
     <template #append>
       <div class="pa-2">
-        <v-btn block @click="rail = !rail">
+        <v-btn block @click="handleToggleRail">
           <v-icon v-if="rail" icon="mdi-arrow-expand-right"></v-icon>
           <v-icon v-else icon="mdi-arrow-expand-left"></v-icon>
         </v-btn>

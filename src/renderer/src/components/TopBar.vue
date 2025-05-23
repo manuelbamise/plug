@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+//import { ref } from 'vue'
 
 //defining the props that the component will accept
 defineProps({
@@ -13,7 +13,7 @@ defineProps({
 const emit = defineEmits(['toggle-drawer'])
 
 // Method to be called when the nav icon is clicked
-const handleNavIconClick = () => {
+const handleNavIconClick = (): void => {
   emit('toggle-drawer') // Emit the custom event
 }
 </script>

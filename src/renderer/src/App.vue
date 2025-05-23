@@ -6,14 +6,18 @@ import ContentModels from './assets/contentModels.json'
 
 const appName = ref('plug')
 const drawerVisible = ref(true)
+
 const rail = ref(false)
+const toggleRail = (): void => {
+  rail.value = !rail.value
+}
 
 onMounted(() => {
   drawerVisible.value = true
   rail.value = true
 })
 
-const handleToggleDrawer = () => {
+const handleToggleDrawer = (): void => {
   if (drawerVisible.value) {
     rail.value = !rail.value
   } else {
@@ -51,7 +55,7 @@ function load(): void {
   <v-app>
     <TopBar :app-name="appName" @toggle-drawer="handleToggleDrawer" />
 
-    <NavigationDrawer />
+    <NavigationDrawer v-model="drawerVisible" :rail="rail" />
     <v-main class="bg-grey-darken-2">
       <v-container fluid>
         <h2>This is the text place</h2>

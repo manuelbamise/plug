@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import TopBar from './components/TopBar.vue'
+import NavigationDrawer from './components/NavigationDrawer.vue'
 import ContentModels from './assets/contentModels.json'
 
 const appName = ref('plug')
@@ -26,7 +27,7 @@ const selectedModel = ref(null)
 const contentModels = ref(ContentModels)
 const sentData = ref(null)
 
-const handleSend = () => {
+const handleSend = (): void => {
   const dataToSend = {
     prompt: prompt.value,
     selectedModel: selectedModel.value,
@@ -40,7 +41,7 @@ const handleSend = () => {
 }
 
 const loading = ref(false)
-function load() {
+function load(): void {
   loading.value = true
   setTimeout(() => (handleSend(), (loading.value = false)), 3000)
 }
@@ -50,36 +51,7 @@ function load() {
   <v-app>
     <TopBar :app-name="appName" @toggle-drawer="handleToggleDrawer" />
 
-    <v-navigation-drawer
-      v-model="drawerVisible"
-      app
-      :permanent="true"
-      :rail="rail"
-      color="grey-darken-3"
-      width="256"
-      @update:rail="(newRailState) => (rail = newRailState)"
-    >
-      <v-list>
-        <!--TODO: Fix this to be able to navigate between different pages
-            and their icons can be clicked and interacted with-->
-        <v-list-item prepend-icon="mdi-home">
-          <v-btn variant="text"> Generate text</v-btn>
-        </v-list-item>
-        <v-list-item prepend-icon="mdi-cog">
-          <v-btn variant="text"> Generate text</v-btn>
-        </v-list-item>
-      </v-list>
-
-      <template #append>
-        <div class="pa-2">
-          <v-btn block @click="rail = !rail">
-            <v-icon v-if="rail" icon="mdi-arrow-expand-right"></v-icon>
-            <v-icon v-else icon="mdi-arrow-expand-left"></v-icon>
-          </v-btn>
-        </div>
-      </template>
-    </v-navigation-drawer>
-
+    <NavigationDrawer />
     <v-main class="bg-grey-darken-2">
       <v-container fluid>
         <h2>This is the text place</h2>

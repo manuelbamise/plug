@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue'
-
 defineProps({
   rail: {
     type: Boolean
@@ -25,8 +23,7 @@ const handleToggleRail = (): void => {
     @update:rail="(newRailState) => (rail = newRailState)"
   >
     <v-list>
-      <!--TODO: Fix this to be able to navigate between different pages
-            and their icons can be clicked and interacted with-->
+      <!--TODO: Fix this to be able to navigate between different pages and their icons can be clicked and interacted with-->
       <v-list-item prepend-icon="mdi-home" class="">
         <v-btn variant="text"> Generate text</v-btn>
       </v-list-item>

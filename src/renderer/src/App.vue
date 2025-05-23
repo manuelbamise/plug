@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted } from 'vue'
 import TopBar from './components/TopBar.vue'
 import NavigationDrawer from './components/NavigationDrawer.vue'
 import ContentModels from './assets/contentModels.json'

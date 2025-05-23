@@ -18,17 +18,18 @@ const handleToggleRail = (): void => {
     app
     :permanent="true"
     :rail="rail"
+    :rail-width="100"
+    :width="200"
     color="grey-darken-3"
-    width="256"
-    @update:rail="(newRailState) => (rail = newRailState)"
   >
     <v-list>
       <!--TODO: Fix this to be able to navigate between different pages and their icons can be clicked and interacted with-->
-      <v-list-item prepend-icon="mdi-home" class="">
-        <v-btn variant="text"> Generate text</v-btn>
+      <v-list-item class="cursor-pointer hover:bg-green-darken-3">
+        <v-btn> <v-icon icon="mdi-home"></v-icon> </v-btn>
       </v-list-item>
-      <v-list-item prepend-icon="mdi-cog">
-        <v-btn variant="text"> Generate text</v-btn>
+
+      <v-list-item>
+        <v-btn> <v-icon icon="mdi-cog"></v-icon> </v-btn>
       </v-list-item>
     </v-list>
 

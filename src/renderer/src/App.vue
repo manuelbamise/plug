@@ -27,6 +27,7 @@ const handleToggleDrawer = (): void => {
 }
 
 const prompt = ref('')
+const textField = ref('')
 const selectedModel = ref(null)
 const contentModels = ref(ContentModels)
 const sentData = ref(null)
@@ -64,8 +65,13 @@ function load(): void {
         <v-textarea
           v-model="prompt"
           variant="outlined"
-          label="What idea do you need more context on ?"
+          placeholder="Start typing a prompt"
         ></v-textarea>
+        <v-text-field
+          v-model="textField"
+          variant="outlined"
+          placeholder="who is this for ?"
+        ></v-text-field>
         <v-select
           v-model="selectedModel"
           label="Content model"

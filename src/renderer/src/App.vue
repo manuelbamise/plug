@@ -56,6 +56,7 @@ function load(): void {
     <TopBar :app-name="appName" @toggle-drawer="handleToggleDrawer" />
 
     <NavigationDrawer v-model="drawerVisible" :rail="rail" @toggle-rail="toggleRail" />
+
     <v-main class="bg-grey-darken-2">
       <v-container fluid>
         <h2>This is the text place</h2>
